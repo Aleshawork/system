@@ -1,0 +1,48 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    environment:
+      POSTGRES_PASSWORD: password
+      MDMP_DB: ${MDC_DB}
+      MDMP_SCHEMA: ${MDC_SCHEMA}
+      MDMP_USER: ${MDC_USER}
+      MDMP_PASSWORD: ${MDC_PASSWORD}
+    #            PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./sh/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    #            - ./data:/var/lib/postgresql/data
+    command:
+      - postgres
+      - -cmax_locks_per_transaction=1024
+      - -cmax_connections=500
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+    shm_size: 512m
+    networks:
+      - mdc-net
+
+  liquibase:
+    image: liquibase/liquibase:${LIQUIBASE_VERSION}
+    depends_on:
+      - postgres
+    networks:
+      - mdc-net
+    volumes:
+      - ./changelog:/liquibase/changelog
+    #command: ls /liquibase/changelog
+    command:
+      - --url=${LIQUIBASE_URL}
+      - --username=${MDC_USER}
+      - --password=${MDC_PASSWORD}
+      - --logLevel=${LIQUIBASE_LOGLEVEL}
+      - --changeLogFile=${LIQUIBASE_CHANGELOG_FILE}
+      - update
+      - -Dappl_role=${MDC_USER}
+      - -Dappl_user=${MDC_USER}
+      - -Dappl_schema=${MDC_SCHEMA}
+
+networks:
+  mdc-net:

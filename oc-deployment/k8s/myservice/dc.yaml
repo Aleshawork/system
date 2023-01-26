@@ -14,3 +14,20 @@ spec:
       app: myservice
   strategy:
     type: RollingUpdate
+  containers:
+    - name: myservice
+      env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+      image:
+      imagePullPolicy: Always
+      livenessProbe:
+        httpGet:
+          path: /health/sayOk
+          port: 8080
+          scheme: HTTP
+        initialDelaySecond: 0
+        periodSecond: 4
+        successThreshold: 1

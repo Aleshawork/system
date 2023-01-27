@@ -5,4 +5,8 @@ GET http://localhost:8080/info/name
 
 
 ### LivenessPrope
-GET http://localhost:8080//health/sayOk
+GET http://localhost:8080/health/sayOk
+
+
+### Minikube
+GET http://localhost:9000/info/name

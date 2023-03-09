@@ -1,4 +1,7 @@
-GET http://localhost:8081/actuator
+GET http://localhost:8081/actuator/prometheus
+
+###
+GET http://localhost:8081/actuator/metrics/myservice.api.http.request
 
 ###
 GET http://localhost:8081/actuator/metrics/myservice.api.http.request

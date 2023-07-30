@@ -31,7 +31,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /health/sayOk
-              port: 8080
+              port: 8081
               scheme: HTTP
             initialDelaySeconds: 0
             periodSeconds: 4

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Для выполнения скрипта на Windows переключить Shell Path на C:\Program Files\Git\bin\bash.exe
 chmod +x init-db.sh
 
 cd ..

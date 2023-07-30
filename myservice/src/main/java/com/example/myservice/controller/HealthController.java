@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path="/health")
-public class HeaithController {
+public class HealthController {
 
     @RequestMapping(
             value = "/sayOk",

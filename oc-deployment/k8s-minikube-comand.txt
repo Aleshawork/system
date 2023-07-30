@@ -1,0 +1,4 @@
+doskey kubectl=minikube kubectl $* - для удобства набора команд
+
+# Лучше запускать на Windows все из Git bush
+kubectl get pods

@@ -1,0 +1,5 @@
+FROM openjdk:11
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} innerservice-1.1.1.jar
+ENTRYPOINT ["java","-jar","/innerservice-1.1.1.jar"]
+EXPOSE 8080

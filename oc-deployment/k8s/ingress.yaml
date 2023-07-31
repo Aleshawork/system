@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+
+spec:
+  defaultBackend: # Начало конфигурации Default backend
+    service:
+      name: myservice-service  # Имя сервиса Default backend
+      port:
+        number: 80
+  rules:
+    - host: hello.world
+      http:
+        paths:
+          - path: /myservice
+            pathType: Prefix
+            backend:
+              service:
+                name: myservice-service
+                port:
+                  number: 9000
+          - path: /innerservice
+            pathType: Prefix
+            backend:
+              service:
+                name: innerservice-service
+                port:
+                  number: 9000

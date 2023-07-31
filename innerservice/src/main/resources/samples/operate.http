@@ -1,0 +1,10 @@
+GET http://{{host}}:{{port}}/operate/
+
+###
+GET http://hello.world/innerservice/operate
+###
+GET http://localhost:8083/operate/
+
+### Info Request
+# @name = InfoRequest
+ GET http://hello.world/innerservice/operate

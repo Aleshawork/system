@@ -2,3 +2,15 @@ doskey kubectl=minikube kubectl $* - для удобства набора ком
 
 # Лучше запускать на Windows все из Git bush
 kubectl get pods
+
+# Поднимаем Ingress
+# https://www.google.com/search?sxsrf=AB5stBhTylrKA2i8_r1RVqc1A66COhA10w:1690743939011&q=minikube+ingress&tbm=vid&source=lnms&sa=X&ved=2ahUKEwjn7Y__j7eAAxXqHxAIHfhUBsYQ0pQJegQIPBAB&biw=1842&bih=967&dpr=1#fpstate=ive&vld=cid:14f57e6e,vid:KERFsC9UF_4
+minikube addons enable ingress
+
+## Полезные команды:
+
+# Описание
+kubectl describe pod
+
+#Логи ингреса в наймспейсе
+kubectl logs ingress-nginx-controller-5959f988fd-h6zdx -n ingress-nginx

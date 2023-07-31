@@ -15,11 +15,13 @@ public class InfoController {
 
     @GetMapping(value ="/status")
     public HttpStatus getInfo() {
+        System.out.println("Status Controller!");
         return HttpStatus.OK;
     }
 
     @GetMapping(value = "/name")
     public String getName() {
+        System.out.println("Name Controller!");
         return String.format("Hello from %s", nodeName);
     }
 

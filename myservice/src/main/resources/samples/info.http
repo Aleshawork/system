@@ -1,4 +1,4 @@
-GET http://localhost:8080/info/status
+GET http://localhost:8081/info/status
 
 ### Info Request
 # @name = InfoRequest
@@ -11,3 +11,8 @@ GET http://localhost:{{port}}/health/sayOk
 
 ### Minikube
 GET http://localhost:9000/info/name
+
+
+### Info Request
+# @name = InfoRequest
+ GET http://hello.world/myservice
